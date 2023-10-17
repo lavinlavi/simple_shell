@@ -11,29 +11,25 @@
 
 int main(int ac, char **av)
 {
-	rootkit my_structure;
-
-	rootkit *kit = &my_structure;
-	atexit(cleanup);
-	init_struct(kit);
+	signal(SIGINT, SIG_DFL);
 	if (ac > 1)
 	{
-		exit(EXIT_FAILURE);
+		return (0);
 	}
 	if (ac == 1)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			inter_shell(kit, av);
+			inter_shell(av);
 		}
 		if (!isatty(STDIN_FILENO))
 		{
-			n_inter_shell(kit, av);
+			/*n_inter_shell(av);*/
+			printf("\nHello");
 		}
 	}
 
 
 	return (0);
 }
-
 

@@ -1,9 +1,5 @@
 #include "shell.h"
 
-
-char *str_maker(char *s1, char *s2);
-char *_strchr(char *s, char c);
-
 /**
  * _strlen - a function to det. string len.
  * @s: pointer to the string.
@@ -49,13 +45,10 @@ char *str_maker(char *s1, char *s2)
 	total_siz = _strlen(s1) + _strlen(s2);
 	total_siz += 3;
 	temp = malloc(sizeof(char) * total_siz);
-	if (!temp)
+	i = 0;
+	if (temp == NULL)
 	{
 		return (NULL);
-	}
-	if (temp)
-	{
-		_memset(temp, 0, total_siz);
 	}
 
 	while (s1[i])
@@ -71,7 +64,7 @@ char *str_maker(char *s1, char *s2)
 	}
 	total_siz = i + j + 1;
 	temp[total_siz] = '\0';
-	new_str = strdup(temp);
+	new_str = _strdup(temp);
 	free(temp);
 	if (!new_str)
 	{
@@ -81,29 +74,30 @@ char *str_maker(char *s1, char *s2)
 }
 
 /**
- * _strchr -  a function to check if a characters is a delim.
- * @s: pointer to the string of delimeters.
- * @c: the character to be checked.
+ * _strdup - a function to replicate a string
+ * @s1: the string.
  *
- * Return: returns a pointer if success and NULL if failure
- */
+ * Return: returns a pointer to the new string.
+*/
 
-char *_strchr(char *s, char c)
+char *_strdup(char *s1)
 {
-	while (*s)
+	int i, j;
+	char *new_str;
+
+	if (!s1)
 	{
-		if (*s)
-		{
-			return (s);
-		}
-		s++;
-	}
-	if (!c)
-	{
-		return (s);
+		return (NULL);
 	}
 
-	return (NULL);
+	i = _strlen(s1);
+	new_str = malloc(sizeof(char) * (i + 1));
+
+	for (j = 0; j < i; j++)
+	{
+		new_str[j] = s1[j];
+	}
+	new_str[i] = '\0';
+
+	return (new_str);
 }
-
-

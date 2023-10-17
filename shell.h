@@ -12,43 +12,36 @@
 #include <signal.h>
 #include <errno.h>
 
-/**
- * struct root -  central structure for the shelll
- * @buf: pointer to input
- * @commands: pointer to array of strings of comamnds.
- * @paths: a pointer to array of strings of paths.
- * @sig: used to control logic
- * @inter_shell: used to ontrol logic
- * @path: pointer to path environment variable.
- */
-
-typedef struct root
-{
-	char *buf;
-	char **commands;
-	char **paths;
-	char *path;
-	int sig;
-	int inter_shell;
-	int n_free;
-} rootkit;
-void n_inter_shell(rootkit *kit, char **av);
-size_t get_token_size(char *buf);
-void init_struct(rootkit *kit);
 extern char **environ;
+
+/* path finder */
 char *find_path();
-char **parse_input(char *buf);
-char *find_command(char **path, char *o_command);
-char *str_maker(char *str1, char *str2);
-int _strlen(char *s);
-char *_strchr(char *s, char c);
-char *_memset(char *s, char b, unsigned int n);
-void free_mem(char *ptr);
-void free_dmem(char **ptr);
+
+/* parser */
+char **parse_command(char *input, char *command);
+size_t get_token_size(char *buf);
+char *get_command(char *path, char *buf);
+
+/* memory tools */
+void p_free(char **ptr);
+void _memset(char **s, size_t n);
+void t_free(char *s, char *p);
+
+/* signal handler */
+/* exit handler */
+/* commandeer */
+
+/* loop */
+void inter_shell(char **av);
 void prompt_user(void);
-int shell_loop(rootkit *kit, char **av);
-void inter_shell(rootkit *kit, char **av);
-void cleanup(void);
-void free_struct(rootkit *kit);
+
+/* exec */
+void execution(char **argv);
+
+/* String manipulators*/
+char *_strdup(char *s1);
+char *str_maker(char *s1, char *s2);
+int _strlen(char *s);
+
 #endif
 

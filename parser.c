@@ -29,7 +29,7 @@ char **parse_command(char *buf, char *command)
 	}
 	c_siz = _strlen(command);
 	argv[0] = malloc(sizeof(char) * (c_siz + 1));
-	strcpy(argv[0], command);
+	_strcpy(argv[0], command);
 	temp = strtok(input, " \n\t");
 
 	for (j = 1; temp; j++)
@@ -40,7 +40,7 @@ char **parse_command(char *buf, char *command)
 			break;
 		}
 		argv[j] = malloc(sizeof(char) * (_strlen(temp) + 1));
-		strcpy(argv[j], temp);
+		_strcpy(argv[j], temp);
 	}
 	free(input);
 

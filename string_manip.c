@@ -1,6 +1,30 @@
 #include "shell.h"
 
 /**
+ * _strcpy - a function to copy the contents of 
+ * one string to another.
+ * @dest: the destination.
+ * @src: the source
+ */
+
+void _strcpy(char *dest, char *src)
+{
+	int len, i;
+
+	len = _strlen(src);
+	if (dest == NULL || src == NULL)
+	{
+		return;
+	}
+	for (i = 0; i < len; i++)
+	{
+		dest[i] = src[i];
+	}
+
+	dest[len] = '\0';
+}
+
+/**
  * _strlen - a function to det. string len.
  * @s: pointer to the string.
  *

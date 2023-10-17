@@ -34,6 +34,7 @@ void t_free(char *s, char *p);
 /* loop */
 void inter_shell(char **av);
 void prompt_user(void);
+void n_inter_shell(char **av);
 
 /* exec */
 void execution(char **argv);
@@ -42,6 +43,7 @@ void execution(char **argv);
 char *_strdup(char *s1);
 char *str_maker(char *s1, char *s2);
 int _strlen(char *s);
+void _strcpy(char *s1, char *s2);
 
 #endif
 

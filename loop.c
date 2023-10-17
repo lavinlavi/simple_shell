@@ -18,9 +18,21 @@ void inter_shell(char **av)
 		input = NULL;
 		prompt_user();
 		num_bytes = getline(&input, &n, stdin);
-		if (num_bytes == -1 ||
-				(num_bytes == 1 && input[num_bytes - 1] == '\n'))
+		if (num_bytes == -1)
+		{
+			free(input);
+			num_bytes = 0;
+			fflush(stdin);
+			fflush(stdout);
+			fflush(stderr);
+			break;
+		}
+		else if (num_bytes == 1 && input[num_bytes - 1] == '\n')
+		{
+			free(input);
+			num_bytes = 0;
 			continue;
+		}
 		else if (num_bytes > 0)
 		{
 			if (input[num_bytes - 1] == '\n')
@@ -31,7 +43,7 @@ void inter_shell(char **av)
 				perror("\nError:");
 				break;
 			}
-			strcpy(buf, input);
+			_strcpy(buf, input);
 			path = find_path();
 			command = get_command(path, buf);
 			t_free(input, path);
@@ -104,7 +116,7 @@ void n_inter_shell(char **av)
 				perror("\nError:");
 				break;
 			}
-			strcpy(buf, input);
+			_strcpy(buf, input);
 			path = find_path();
 			command = get_command(path, buf);
 			t_free(path, input);

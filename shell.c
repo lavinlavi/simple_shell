@@ -24,8 +24,7 @@ int main(int ac, char **av)
 		}
 		if (!isatty(STDIN_FILENO))
 		{
-			/*n_inter_shell(av);*/
-			printf("\nHello");
+			n_inter_shell(av);
 		}
 	}
 

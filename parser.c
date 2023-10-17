@@ -86,6 +86,7 @@ char *get_command(char *path, char *buf)
 	char *f_input, *temp, *token;
 	char *input;
 
+	input = token = temp = f_input = NULL;
 	input = _strdup(buf);
 	f_input = _strdup(strtok(input, " \n\t"));
 	if (stat(f_input, &statbuf) == 0)
@@ -98,7 +99,6 @@ char *get_command(char *path, char *buf)
 	}
 	free(f_input);
 	token = strtok(path, " :\n\t");
-	temp = NULL;
 	while (token)
 	{
 		temp = str_maker(token, input);

@@ -15,8 +15,8 @@ void inter_shell(char **av)
 	while (1)
 	{
 		sig = n = 0;
-		input = NULL;
 		prompt_user();
+		path = buf = input = command = NULL;
 		num_bytes = getline(&input, &n, stdin);
 		if (num_bytes == -1)
 		{

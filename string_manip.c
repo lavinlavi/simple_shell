@@ -69,6 +69,10 @@ char *str_maker(char *s1, char *s2)
 	total_siz = _strlen(s1) + _strlen(s2);
 	total_siz += 3;
 	temp = malloc(sizeof(char) * total_siz);
+	for (i = 0; i < total_siz; i++)
+	{
+		temp[i] = 0;
+	}
 	i = 0;
 	if (temp == NULL)
 	{
